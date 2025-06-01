@@ -13,7 +13,6 @@ import lombok.*;
 @Getter
 @Setter
 public class Product {
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long productId;
@@ -21,5 +20,4 @@ public class Product {
     private String productDescription;
     private double price;
     private String category;
-
 }

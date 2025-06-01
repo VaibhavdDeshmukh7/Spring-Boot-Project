@@ -17,8 +17,13 @@ public class ProductController {
 
     @GetMapping("/getProduct")
     public ResponseEntity<?> getProduct(@RequestBody ProductDTO productDTO) {
+        return new ResponseEntity<>(productService.getProduct(productDTO.getProductId()), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/getAllProduct")
+    public ResponseEntity<?> getAllProduct() {
         try {
-            return new ResponseEntity<>(productService.getProduct(productDTO.getProductId()), HttpStatus.OK);
+            return new ResponseEntity<>(productService.getAllProduct(), HttpStatus.OK);
         } catch (Exception e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
