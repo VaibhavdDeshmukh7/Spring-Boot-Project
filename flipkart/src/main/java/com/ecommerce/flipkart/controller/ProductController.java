@@ -4,6 +4,8 @@ import com.ecommerce.flipkart.dto.ProductDTO;
 import com.ecommerce.flipkart.pojo.Product;
 import com.ecommerce.flipkart.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -16,8 +18,12 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping("/getProduct")
-    public Optional<Product> getProduct() {
-        return productService.getProductList();
+    public ResponseEntity<?> getProduct(@RequestBody ProductDTO productDTO) {
+        try {
+            return new ResponseEntity<>(productService.getProductList(productDTO.getProductId()), HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PostMapping("/addProduct")
@@ -27,14 +33,16 @@ public class ProductController {
 
 //    @PutMapping("/updateProduct")
 //    public Optional<Product> updateProduct(@RequestBody ProductDTO productDTO){
-//        System.out.println("hi");
-////        return productService.updateProduct(productDTO);
+//        return productService.updateProduct(productDTO);
 //    }
 
     @DeleteMapping("/deleteProduct")
-    public Optional<Product> deleteProduct(@RequestBody ProductDTO productDTO){
-//        System.out.println("hi");
+    public ResponseEntity<String> deleteProduct(@RequestBody ProductDTO productDTO){
+        try {
+            return new ResponseEntity<>(productService.deleteProduct(productDTO), HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
 
-        return productService.deleteProduct(productDTO);
     }
 }

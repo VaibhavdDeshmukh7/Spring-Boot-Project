@@ -14,8 +14,8 @@ public class ProductService {
     @Autowired
     private ProductDAO productDAO;
 
-    public Optional<Product> getProductList(){
-        return productDAO.findById(1);
+    public Product getProductList(long productId){
+        return productDAO.findById((int) productId).get();
     }
 
     public String addProduct(Product product){
@@ -30,20 +30,19 @@ public class ProductService {
 
 
 //    public Optional<Product> updateProduct(ProductDTO productDTO) {
-//        Optional<Product> isExist = productDAO.findById(1);
-//
-//        if(isExist.isPresent()){
-//
+//        Optional<Product> productId = productDAO.findById((int) productDTO.getProductId());
+//        if(productId.isPresent()){
+//            productDAO.delete(productId.get());
 //        }
 //        return new Optional<Product>();
 //    }
 
-    public Optional<Product> deleteProduct(ProductDTO productDTO) {
-        Optional<Product> productId = productDAO.findById(Math.toIntExact(productDTO.getProductId()));
+    public String deleteProduct(ProductDTO productDTO) {
+        Optional<Product> productId = productDAO.findById((int) productDTO.getProductId());
 
         if(productId.isPresent()){
-
+            productDAO.delete(productId.get());
         }
-        return new Optional<Product>();
+        return "deleted the product";
     }
 }

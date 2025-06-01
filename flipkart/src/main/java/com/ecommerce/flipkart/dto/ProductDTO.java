@@ -5,6 +5,9 @@ import lombok.Getter;
 
 @Data
 public class ProductDTO {
-    private Long productId;
+    private long productId;
     private String productName;
+    private String productDescription;
+    private double price;
+    private String category;
 }
