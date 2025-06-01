@@ -32,6 +32,7 @@ Thumbs.db
 *.iws
 *.iml
 *.ipr
+*.ist
 
 ### NetBeans ###
 /nbproject/private/
