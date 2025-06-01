@@ -8,8 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @RestController
 @RequestMapping("/product")
 public class ProductController {
@@ -20,21 +18,29 @@ public class ProductController {
     @GetMapping("/getProduct")
     public ResponseEntity<?> getProduct(@RequestBody ProductDTO productDTO) {
         try {
-            return new ResponseEntity<>(productService.getProductList(productDTO.getProductId()), HttpStatus.OK);
+            return new ResponseEntity<>(productService.getProduct(productDTO.getProductId()), HttpStatus.OK);
         } catch (Exception e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @PostMapping("/addProduct")
-    public String createProduct(@RequestBody Product product) {
-        return productService.addProduct(product);
+    public ResponseEntity<?> addProduct(@RequestBody Product product) {
+        try {
+            return new ResponseEntity<>(productService.addProduct(product), HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
-//    @PutMapping("/updateProduct")
-//    public Optional<Product> updateProduct(@RequestBody ProductDTO productDTO){
-//        return productService.updateProduct(productDTO);
-//    }
+    @PutMapping("/updateProduct")
+    public ResponseEntity<?> updateProduct(@RequestBody ProductDTO productDTO){
+        try {
+            return new ResponseEntity<>(productService.updateProduct(productDTO), HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     @DeleteMapping("/deleteProduct")
     public ResponseEntity<String> deleteProduct(@RequestBody ProductDTO productDTO){
@@ -43,6 +49,5 @@ public class ProductController {
         } catch (Exception e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
 }
