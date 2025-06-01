@@ -1,3 +1,19 @@
+# IDE settings
+.idea/
+*.iml
+
+# Build files
+/target/
+/build/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
