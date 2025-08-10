@@ -24,3 +24,12 @@ hs_err_pid*
 
 .idea
 .target
+
+**/target/
+**/*.iml
+**/.idea/
+
+# In each module directory
+target/
+*.iml
+.idea/
