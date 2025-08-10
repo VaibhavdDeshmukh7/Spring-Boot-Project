@@ -25,9 +25,10 @@
 
     <!-- Child Modules -->
     <modules>
-        <module>flipkart-eureka-server</module>
+        <module>flipkart-service-registry</module>
         <module>flipkart-cloud-config-server</module>
         <module>flipkart-product-service</module>
+        <module>flipkart-api-gateway</module>
     </modules>
 
     <!-- Common Properties -->
