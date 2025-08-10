@@ -1,9 +1,6 @@
 package com.ecommerce.flipkart.pojo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -12,6 +9,7 @@ import lombok.*;
 @ToString
 @Getter
 @Setter
+@Table
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -20,4 +18,6 @@ public class Product {
     private String productDescription;
     private double price;
     private String category;
+
+
 }

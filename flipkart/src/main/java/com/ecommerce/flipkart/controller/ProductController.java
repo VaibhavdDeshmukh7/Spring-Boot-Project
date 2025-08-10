@@ -17,41 +17,39 @@ public class ProductController {
 
     @GetMapping("/getProduct")
     public ResponseEntity<?> getProduct(@RequestBody ProductDTO productDTO) {
-        return new ResponseEntity<>(productService.getProduct(productDTO.getProductId()), HttpStatus.CREATED);
+        return new ResponseEntity<>(productService.getProduct(productDTO.getProductId()), HttpStatus.OK);
     }
 
     @GetMapping("/getAllProduct")
     public ResponseEntity<?> getAllProduct() {
         try {
             return new ResponseEntity<>(productService.getAllProduct(), HttpStatus.OK);
-        } catch (Exception e){
+        } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @PostMapping("/addProduct")
     public ResponseEntity<?> addProduct(@RequestBody Product product) {
-        try {
-            return new ResponseEntity<>(productService.addProduct(product), HttpStatus.OK);
-        } catch (Exception e){
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        return new ResponseEntity<>(productService.addProduct(product), HttpStatus.OK);
     }
 
     @PutMapping("/updateProduct")
-    public ResponseEntity<?> updateProduct(@RequestBody ProductDTO productDTO){
+    public ResponseEntity<?> updateProduct(@RequestBody ProductDTO productDTO) {
+        ResponseEntity<?> result;
         try {
-            return new ResponseEntity<>(productService.updateProduct(productDTO), HttpStatus.OK);
-        } catch (Exception e){
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            result = new ResponseEntity<>(productService.updateProduct(productDTO), HttpStatus.OK);
+        } catch (Exception e) {
+            result = new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
+        return result;
     }
 
     @DeleteMapping("/deleteProduct")
-    public ResponseEntity<String> deleteProduct(@RequestBody ProductDTO productDTO){
+    public ResponseEntity<String> deleteProduct(@RequestBody ProductDTO productDTO) {
         try {
             return new ResponseEntity<>(productService.deleteProduct(productDTO), HttpStatus.OK);
-        } catch (Exception e){
+        } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

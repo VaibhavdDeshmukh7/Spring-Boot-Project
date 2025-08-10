@@ -2,7 +2,8 @@ package com.ecommerce.flipkart.service;
 
 import com.ecommerce.flipkart.dao.ProductDAO;
 import com.ecommerce.flipkart.dto.ProductDTO;
-import com.ecommerce.flipkart.exception.ProductNotFoundException;
+import com.ecommerce.flipkart.exception.type.NotAddedException;
+import com.ecommerce.flipkart.exception.type.NotFoundException;
 import com.ecommerce.flipkart.pojo.Product;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class ProductService {
     private ProductDAO productDAO;
 
     public Product getProduct(long productId){
-        return productDAO.findById((int) productId).orElseThrow(() -> new ProductNotFoundException("Product not found!!"));
+        return productDAO.findById((int) productId).orElseThrow(() -> new NotFoundException("Product not found!!"));
     }
 
     public List<Product> getAllProduct(){
@@ -29,10 +30,9 @@ public class ProductService {
         try {
             productDAO.save(product);
         } catch (Exception e){
-            System.out.println("Getting error while adding product");
-            throw e;
+            throw new NotAddedException("Product Not Added");
         }
-        return "Successfully Uploaded The Object";
+        return "Product Added Successfully";
     }
 
     @Transactional
@@ -53,6 +53,4 @@ public class ProductService {
         productId.ifPresent(product -> productDAO.delete(product));
         return "deleted the product";
     }
-
-
 }
