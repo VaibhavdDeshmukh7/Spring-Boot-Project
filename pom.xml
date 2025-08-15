@@ -29,6 +29,7 @@
         <module>flipkart-cloud-config-server</module>
         <module>flipkart-product-service</module>
         <module>flipkart-api-gateway</module>
+        <module>flipkart-user-admin-service</module>
     </modules>
 
     <!-- Common Properties -->
