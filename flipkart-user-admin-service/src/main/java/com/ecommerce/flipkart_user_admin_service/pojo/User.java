@@ -10,7 +10,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(nullable = false)
-    private Long id;
+    private Integer id;
 
     @Column(name = "Name")
     private String name;
@@ -25,7 +25,7 @@ public class User {
         Contact = contact;
     }
 
-    public User(String name, String contact, Long id) {
+    public User(String name, String contact, Integer id) {
         this.name = name;
         Contact = contact;
         this.id = id;
@@ -47,11 +47,11 @@ public class User {
         this.name = name;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

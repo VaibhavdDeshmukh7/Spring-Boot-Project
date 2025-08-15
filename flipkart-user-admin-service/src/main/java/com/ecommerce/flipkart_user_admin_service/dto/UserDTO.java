@@ -4,7 +4,7 @@ public class UserDTO {
 
     private String name;
     private String contact;
-    private Long id;
+    private Integer id;
 
     public UserDTO() {}
 
@@ -13,7 +13,7 @@ public class UserDTO {
         this.contact = contact;
     }
 
-    public UserDTO(String name, String contact, Long id) {
+    public UserDTO(String name, String contact, Integer id) {
         this.name = name;
         this.contact = contact;
         this.id = id;
@@ -35,11 +35,11 @@ public class UserDTO {
         this.name = name;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 }

@@ -8,7 +8,6 @@
 		<version>0.0.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.ecommerce</groupId>
 	<artifactId>flipkart-service-registry</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>flipkart-service-registry</name>
